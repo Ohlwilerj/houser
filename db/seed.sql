@@ -7,3 +7,10 @@
 --   state VARCHAR(2),
 --   zip INTEGER
 -- );
+
+ALTER TABLE listing
+ADD COLOUMN img text,
+
+ALTER TABLE listing
+ADD COLUMN mortgage decimal,
+ADD COLUMN rent decimal;

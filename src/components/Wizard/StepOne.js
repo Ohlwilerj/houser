@@ -1,7 +1,5 @@
-
-import Header from './../Header/Header'
 import React, { Component } from 'react'
-import store, {STEP_ONE} from './../../redux/store'
+import store, {HANDLE_NAME, HANDLE_ADDRESS, HANDLE_CITY, HANDLE_STATE, HANDLE_ZIP} from './../store'
 import {Link} from 'react-router-dom'
 
 export default class StepOne extends Component {
@@ -23,24 +21,47 @@ export default class StepOne extends Component {
             this.setState({
                 name: reduxState.name,
                 address: reduxState.address,
-                city: reduxState.address,
+                city: reduxState.city,
                 state: reduxState.state,
                 zip: reduxState.zip
             })
         })
     }
 
-    handleNext = () => {
+    handleName = (e) => {
         store.dispatch({
-            type: STEP_ONE,
-            payload: this.state
+            type: HANDLE_NAME,
+            payload: e.target.value
             
         })
     }
 
-    handleChange = (e) => {
-        
-        this.setState({[e.target.name]: e.target.value})
+    handleAddress = (e) => {
+        store.dispatch({
+            type: HANDLE_ADDRESS,
+            payload: e.target.value
+        })
+    }
+
+    handleCity = (e) => {
+        store.dispatch({
+            type: HANDLE_CITY,
+            payload: e.target.value
+        })
+    }
+
+    handleState = (e) => {
+        store.dispatch({
+            type: HANDLE_STATE,
+            payload: e.target.value
+        })
+    }
+
+    handleZip = (e) => {
+        store.dispatch({
+            type: HANDLE_ZIP,
+            payload: e.target.value 
+        })
     }
 
 
@@ -48,25 +69,29 @@ export default class StepOne extends Component {
     render() {
         return (
             <div>
-                <header>
-                    <Header />
-                </header>
                 <main>
                     <form>
-                        <input type="text" name="name" placeholder="name" value={this.state.name} 
-                            onChange={this.handleChange} />
-                        <input type="text" name="address" placeholder="address" value={this.state.address}
-                            onChange={this.handleChange} />
-                        <input type="text" name="city" placeholder="city" value={this.state.city}
-                            onChange={this.handleChange} />
-                        <input type="text" name="state" placeholder="state" value={this.state.state}
-                            onChange={this.handleChange} />
-                        <input type="number" name="zip" placeholder="zip" value={this.state.zip}
-                            onChange={this.handleChange} />
-                        <Link to="/">
-                            <button onClick={this.handleNext}>Complete</button>
-                        </Link>
+                        <h4>Name:</h4>
+                        <input type="text" placeholder="name" value={this.state.name} 
+                            onChange={e => this.handleName(e)} />
+                        <h4>Address:</h4>
+                        <input type="text" placeholder="address" value={this.state.address}
+                            onChange={e => this.handleAddress(e)} />
+                        <h4>City:</h4>
+                        <input type="text" placeholder="city" value={this.state.city}
+                            onChange={e => this.handleCity(e)} />
+                        <h4>State:</h4>
+                        <input type="text" placeholder="state" value={this.state.state}
+                            onChange={e => this.handleState(e)} />
+                        <h4>Zip:</h4>
+                        <input type="number" placeholder="zip" value={this.state.zip}
+                            onChange={e => this.handleZip(e)} />
                     </form>
+                        <div className="step-buttons">
+                        <Link to="/wizard/StepTwo">
+                            <button onClick={this.handleNext}>Next</button>
+                        </Link>
+                        </div>
                 </main>
             </div>
         )

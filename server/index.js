@@ -15,6 +15,9 @@ app.use(express.json())
 
 // ENDPOINTS
 app.post('/api/house', ctrl.addHouse)
+app.get('/api/house', ctrl.getHouse)
+app.delete('/api/house/:id', ctrl.deleteHouse)
+
 
 
 massive(CONNECTION_STRING).then(db => {

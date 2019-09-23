@@ -1,24 +1,37 @@
 import React, { Component } from 'react'
-import {Switch, Route} from "react-router-dom"
+import {Link, Route} from "react-router-dom"
 import StepOne from './StepOne'
 import StepTwo from './StepTwo'
+import StepThree from './StepThree'
+import store, {CANCEL} from './../store'
 
 export default class Wizard extends Component {
-    constructor() {
-        super()
-        this.state = {}
+    cancel = () => {
+        store.dispatch({
+            type: CANCEL
+        })
     }
 
     
     render() {
         return (
-            <Switch>
-            <div>
-                <Route path="/wizard/step/1" component= {StepOne} />
-                <Route path="/wizard/step/2" component= {StepTwo} />
+            <div className="wizard-top">
+                <div className="wizard">
+                    <div className="wizard-header">
+                        <h1>Add New Listing</h1>
+                        <Link to='/'>
+                            <button onClick={() => this.cancel()}>Cancel</button>
+                        </Link>
+                    </div>
+                    <div className="steps">
+                        <Route path='/wizard/StepOne' component={StepOne} />
+                        <Route path='/wizard/StepTwo' component={StepTwo} />
+                        <Route path='/wizard/StepThree' component={StepThree} />
+                    </div>
+                </div>
+
             </div>
 
-            </Switch>
         )
     }
 }
