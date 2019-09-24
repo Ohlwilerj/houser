@@ -34,6 +34,8 @@ export default class Dashboard extends Component {
             return (
                 <div className="houses" key={el.id}>
                   <House 
+                    house = {el}
+                    id={el.property_id}
                     name={el.name}
                     address={el.address}
                     city={el.city}

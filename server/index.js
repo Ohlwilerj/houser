@@ -15,7 +15,7 @@ app.use(express.json())
 
 // ENDPOINTS
 app.post('/api/house', ctrl.addHouse)
-app.get('/api/house', ctrl.getHouse)
+app.get('/api/house', ctrl.getHouses)
 app.delete('/api/house/:id', ctrl.deleteHouse)
 
 

@@ -89,7 +89,7 @@ export default class StepOne extends Component {
                     </form>
                         <div className="step-buttons">
                         <Link to="/wizard/StepTwo">
-                            <button onClick={this.handleNext}>Next</button>
+                            <button>Next</button>
                         </Link>
                         </div>
                 </main>
@@ -97,3 +97,5 @@ export default class StepOne extends Component {
         )
     }
 }
+
+// onClick={this.handleNext}

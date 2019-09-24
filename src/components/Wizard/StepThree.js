@@ -44,9 +44,9 @@ export default class StepThree extends Component {
 
     addHouse() {
         const reduxState = store.getState()
-        let {name, address, city, state, zip} = reduxState
+        let {name, address, city, state, zip, img} = reduxState
         let {monthlyMortgage, monthlyRent} = this.state
-        axios.post('api/house', {name, address, city, state, zip, monthlyMortgage, monthlyRent})
+        axios.post('api/house', {name, address, city, state, zip,img, monthlyMortgage, monthlyRent})
         store.dispatch({
             type: CANCEL
         })
@@ -64,7 +64,7 @@ export default class StepThree extends Component {
                     onChange={e => this.handleMonthlyRent(e)} />
                 <div className='step-buttons'>
                     <Link to='/wizard/StepTwo'><button>Previous</button></Link>
-                    <button className='complete-button' onclick={() => this.addHouse()}>Complete</button>
+                    <button className='complete-button' onClick={() => this.addHouse()}>Complete</button>
                 </div>
             </div>
         )

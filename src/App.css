@@ -146,3 +146,8 @@ form {
   input: 14px;
 
 }
+
+.house > img {
+    height: 30vh;
+    width: 30vw;
+}
